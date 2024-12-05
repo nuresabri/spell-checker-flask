@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spell Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            text-align: center;
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .suggestions {
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Spell Checker</h1>
+        <form method="POST">
+            <input type="text" name="word" placeholder="Enter a word" value="{{ user_word }}" required>
+            <button type="submit">Check</button>
+        </form>
+
+        {% if suggestions %}
+        <div class="suggestions">
+            <h3>Suggestions:</h3>
+            <ul>
+                {% for word, score in suggestions %}
+                <li>{{ word }} (score: {{ score }})</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
+ 
